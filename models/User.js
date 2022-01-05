@@ -1,5 +1,5 @@
-const bcrypt = require('bcrypt');
 const { Model, DataTypes } = require('sequelize');
+const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
 // create our User model
@@ -12,8 +12,7 @@ class User extends Model {
 
 // define table columns and configuration
 User.init(
-  {
-      // define an id column
+  {// define an id column
       id: {
           // use the speciali Sequelize DataTypes object provide what type of data it is
           type: DataTypes.INTEGER,

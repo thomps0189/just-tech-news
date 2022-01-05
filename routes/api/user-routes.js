@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
-    })
+    });
 });
 
 // GET /api/users/1 this is the same as SELECT * FROM users WHERE id = 1
@@ -55,14 +55,12 @@ router.post('/login', (req, res) => {
   User.findOne({
     where: {
       email: req.body.email
-    }
-  }).then(dbUserData => {
+        }
+    }).then(dbUserData => {
     if (!dbUserData) {
       res.status(400).json({ message: 'No user with that email address!' });
       return;
     }
-
-    // res.json({ user: dbUserData });
 
     // Verify user
     const validPassword = dbUserData.checkPassword(req.body.password);
@@ -71,7 +69,7 @@ router.post('/login', (req, res) => {
         return;
     }
 
-    res.json({ user: dbUserData, message: 'You are now logged in!' })
+    res.json({ user: dbUserData, message: 'You are now logged in!' });
 
   });
 })
